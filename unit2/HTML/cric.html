@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *{
+            background-color: rgb(14,14,14);
+        } */
+        #container{
+            width:1000px;
+            margin:100px auto;
+            background:rgb(39,39,39) ;
+            display: flex;
+            height: 600px;
+            color:rgb(212,212,212);
+            font-family:  Arial, sans-serif;
+            padding:10px 50px
+
+            
+        }
+        
+        #container > .left{
+            width:600px;
+            /* border: 1px solid red; */
+            margin:15px
+        }
+
+        #container > .left > div{
+           
+            font-size: 40px;
+            font-weight: 700;
+            /* padding: 20px;/ */
+
+        }
+        #container > .left  > img{
+            border-radius: 10px;
+            width:500px
+        }
+        #container >.right {
+            width:400px;
+            padding:10px
+           
+        }
+        #container >.right > div{
+            height:22%;
+            padding:2%;
+            display:flex;
+            /* border: 1px solid red; */
+        }
+        #container >.right > div>img{
+            width:150px;
+            padding-right: 10px;
+            border-radius: 10px;
+
+        }
+        #container >.right > div>img+div{
+            padding:10px;
+            font-weight: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="left">
+            <img src="https://c.ndtvimg.com/2021-10/n8oto08g_glenn-maxwell-rcb-bcciipl_240x180_12_October_21.jpg?output-quality=80&downsize=1060:*" alt="">
+            <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias rerum et laboriosam atque excepturi nihil!</div>
+        </div>
+        <div class= "right">
+            <div>
+                
+                <img src="https://c.ndtvimg.com/2021-10/a607qm5_narine-bcci-ipl_240x180_11_October_21.jpg?output-quality=80&downsize=280:*" alt="">
+                <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi atque sit aspernatur eveniet voluptates nulla qu</div>
+            </div>
+            <div>
+                <img src="https://c.ndtvimg.com/2021-10/jaks90u8_virat-kohli-bcciipl-630_240x180_12_October_21.jpg?output-quality=80&downsize=280:*" alt="">
+                <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi atque sit aspernatur eveniet voluptates nulla qu</div>
+
+            </div>
+            <div>
+                <img src="https://c.ndtvimg.com/2021-10/ishimlec_csk_240x180_11_October_21.jpg?output-quality=80&downsize=280:*" alt="">
+                <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi atque sit aspernatur eveniet voluptates nulla qu</div>
+
+            </div>
+            <div>
+                <img src="https://c.ndtvimg.com/2021-10/5iipug88_harshal-patel-bcci-ipl_240x180_11_October_21.jpg?output-quality=80&downsize=280:*" alt="">
+                <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi atque sit aspernatur eveniet voluptates nulla qu</div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

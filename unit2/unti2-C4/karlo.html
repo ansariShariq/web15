@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <select name="Category" id="category">
+            <option value="refund">Refund</option>
+            <option value="Order Missig">Order Missig</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Order Status">Order Status</option>
+            <option value="Feedback">Feedback</option>
+
+        </select>
+
+        <textarea name="Ticket body" id="ticketBody" cols="30" rows="10"></textarea>
+        <input id='date' type="date">
+        <input id ='randomNumber' type="number">
+    </form>
+</body>
+</html>
+<script>
+    document.getElementById('randomNumber').value = Math.ceil(Math.random() * 10 )
+
+    
+</script>

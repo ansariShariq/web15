@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        background-color: rgb(41, 222, 228);
+    }
+    tr,th,td{
+         border: 1px solid;
+         text-align: center;
+    }
+</style>
+<body>
+   <form>
+    <input id="itm" type="text" placeholder="Enter Item"/>
+    <input id="qty" type="number" placeholder="Enter Quantity"/>
+    <input type="submit" value="Add Task"/>
+   </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Delete Item</th>
+            </tr>
+            <tbody>
+            </tbody>
+        </thead>
+    </table>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit" , todoList);
+ var todoArr = JSON.parse(localStorage.getItem("todoTodo")) || [];
+creatTable(todoArr);
+function todoList(event){
+    
+    event.preventDefault();
+    //s1 -> get values from html form
+    var item=document.querySelector("#itm").value;
+    var qty=document.querySelector("#qty").value;
+    //s2-> put all values in object
+var taskList = {itemName : item , itemQty: qty};
+//s3 -> objects push in the array
+todoArr.push(taskList);
+//s4 -> array put in the localstorage
+localStorage.setItem("todoTodo", JSON.stringify(todoArr));   // here todoTodo is a key of localsto
+creatTable(todoArr);
+}
+function creatTable(todoArr) {
+    //console.log(todoArr);
+    document.querySelector("tbody").innerHTML ='';
+    console.log(document.querySelector("tbody"));
+    //for delete
+    todoArr.map(function(elem , index){
+    // todoArr.map(function (elem){
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        td1.textContent = elem.itemName;
+        var td2 = document.createElement("td");
+        td2.textContent = elem.itemQty;
+        var td3 = document.createElement("td");
+        td3.textContent = "Delete";
+        td3.addEventListener( "click" , function (){
+            deleteTask(index);
+        });
+        tr.append(td1 , td2 , td3);
+        document.querySelector("tbody").append(tr);
+    // });
+});
+}
+function deleteTask(index){
+    todoArr.splice(index , 1)
+   //console.log(todoArr)
+   localStorage.setItem("todoTodo",JSON.stringify(todoArr))
+   creatTable(todoArr)
+}; 
+</script>
+</html>

@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,td{
+            border: 1px solid black;
+            padding: 10px;
+        }
+        #p{
+            display: inline-block;
+            width: 47%;
+        }
+        #button{
+            background-color: rgb(29,32,25);
+            color: rgb(241,19,19);
+            padding: 10px;
+            margin-top: 10px;
+            width: 80px;
+            border-radius: 10%;
+        }
+        body>div>h1{
+            margin-left: 20px;
+        }
+        #y2{
+            display: inline-block;
+            width: 47%;
+            vertical-align: top;
+        }
+        form{
+            width: 80%;
+            margin-left: 20px;
+        }
+        h1{
+            color: rgb(138,11,28);
+            font-family: 'Times New Roman';
+        }
+        .box{
+            width: 100%;
+            height: 20px;
+        }
+        .box1{
+            font-size: 25px;
+            line-height: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="p">
+        <h1>Karlo Tickets</h1>
+        <form>
+            <label for="box"="box1">Ticket Category</label>
+            <br>
+            <select name="" id="cate" class="box">
+                <option value="--">--</option>
+                <option value="Refund">refund</option>
+                <option value="item">item missing</option>
+                <option value="order">order status</option>
+                <option value="delivery">delivery</option>
+                <option value="feedack">feedback</option>
+            </select>
+        </br>
+    </br>
+</br>
+      <label for="" box="box1">Ticket body</label>
+    </br>
+      <textarea rows="5" cols="50" id="des" type="text" placeholder="Home"></textarea>
+    </br>
+</br>
+<label>Date</label>
+<input id="name" type="Date"/>
+<br>
+</br>
+<input id="pri" type="number" placeholder="enter price" class="Box">
+<br>
+<input type="submit" value="Add" id="button">
+   </form>
+    </div>
+    <div id="y2">
+        <h1>Karloo Info</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caregory</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        if('WebSocket' in window){
+            (function (){
+                function refreshcss(){
+                    var sheets=[].slice.call(document.getElementsByTagName("link"));
+                    var head=document.getElementsByTagName("head")[0];
+                    for(var i=0;i<sheets.length;i++){
+                        var elem=sheets[i];
+                        var parent=elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel=elem.rel;
+                        if(elem.href && typeof rel !="string" || rel.length==0 || rel.toLowerCase() == "stylesheet"){
+                            var url=ele.href.replace(/(&|\?)_cacheOverride=\d+/,'');
+                           elem.href= url + (url.indexof('?') >=0 ? '&' : '?')+'_cacheOvrride=' + (new date().valueof()),
+                         ''}
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol=window.location.protocol==='http:'?'ws://' : 'wss://';
+                var address=protocol+window.location.host + window.location.pathname+'/ws';
+                var socket=new WebSocket(address);
+                socket.onmessage=function(msg){
+                    if(msg.data=='reload') window.location.reload();
+                    else if(msg.data=='refreshCSS') refreshcss();
+                };
+                if(sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_liveServer')){
+                    console.log('Live reload enable.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_liveServer',true);
+                }
+            })();
+        }
+        else{
+            console.error('Upgrade your browser. This Browser is NOT Supported Websocket for Live-Reloading');
+        }
+    </script>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",addItem);
+    var shoppingList=JSON.parsel(localStorage.getItem("totalList")) || [];
+    function addItem(event){
+        event.preventDefault();
+        var name=document.getElementById("name").value
+        var description=document.getElementById("des").value
+        var price=document.getElementById("pri").value
+        var category=document.getElementById("cate").value
+    }
+    var list= {
+        itemCategory:category,
+        itemItem:name,
+        itemDescription:description,
+        itemPrice:price,
+    };
+    shoppingList.push(list);
+    localStorage.setItem("totalList",JSON.stringify(shoppingList));{
+        displayItems(shoppingList);
+    }
+    window.addEventListener("load",function(){
+        displayItems(shoppingList);
+    })
+    function displayItems(shoppingList){
+        document.querySelector('tbody').textContent="";
+        shoppingList.map(function(item,index){
+            var tr=document.createElement("tr");
+
+            var td1=document.createElement("td");
+            td1.textContent=item.itemCategory;
+
+            var td2=document.createElement("td");
+            td2.textContent=item.itemItem;
+
+            var td3=document.createElement("td");
+            td3.textContent=item.itemDescription;
+
+            var td4=document.createElement("td");
+            td4.textContent=item.itemPrice;
+
+            var td5=document.createElement("td");
+            td5.innerHTML="<button>Delete</button";
+                td5.addEventListener("click",function(){
+                    makeDelete();
+                });
+                tr.append(td1,td2,td3,td4,td5);
+                document.querySelector("tbody").append(tr);
+        })
+    }
+    function makeDelete(index){
+        shoppingList.splice(index,1);
+        localStorage.setItem("totalList",JSON.stringify(shoppingList));
+        displayItems(shoppingList)
+    }
+    </script>

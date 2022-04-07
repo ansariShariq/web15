@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,th,td{
+           border: 1px solid black;
+           border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <form >
+        <input type="text" name='items' id ="items">
+        <input type="number" name="qty" id="qty">
+        <input type="submit" name="submit" id="submit">
+    </form>
+    <table>
+        <thead>
+
+            <th>ITems</th>
+            <th>Quantity</th>
+            <th>Remove ?</th>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr> -->
+           
+        </tbody>
+        
+        
+    </table>
+</body>
+</html>
+<script>
+// document.getElementsByTagName(tbody)
+// console.log(document.getElementsByTagName("tbody")[0].innerHTML)
+var todoList = JSON.parse(localStorage.getItem("ItemList"))||[]
+ window.onload = showItem(todoList)
+
+console.log(JSON.parse(localStorage.getItem("ItemList")))
+document.getElementById("submit").addEventListener('click',addItem)
+function addItem(e){
+    document.getElementsByTagName('tbody')[0].innerHTML = ''
+    e.preventDefault()
+    let item = document.getElementById("items").value
+    let qty = document.getElementById('qty').value
+    let obj = {
+        elem:item,
+        quantity:qty,
+    }
+    todoList.push(obj)
+    showItem(todoList)
+   
+    localStorage.setItem("ItemList",JSON.stringify(todoList))
+    document.getElementById("items").value = null
+    document.getElementById('qty').value = null
+
+}
+function showItem(todoList){
+        todoList.map(function(item,i){
+        let tr = document.createElement('tr')
+        tr.id = i
+        let td1 = document.createElement('td')
+        td1.innerText = item.elem
+
+        let td2 = document.createElement('td')
+        td2.innerText = item.quantity
+        let td3 = document.createElement('td')
+        
+        let btn = document.createElement('button')
+        btn.innerText = "Delete"
+        
+        btn.setAttribute("click",removeItem(i))
+        td3.append(btn)
+        tr.append(td1,td2,td3)
+            console.log(tr)
+        document.getElementsByTagName('tbody')[0].append(tr)
+    })
+    }
+    function removeItem(id){
+        let arr = JSON.parse(localStorage.getItem('ItemList'))
+        console.log(arr)
+        
+    
+    }
+</script>

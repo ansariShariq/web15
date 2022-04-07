@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            width: 1000px;
+            margin: auto;
+        }
+    .container>div{
+        margin:20px;
+        padding: 20px;
+    }
+    #right{
+        background-color: black;
+        color: white;
+        width:500px;
+    }
+    #left >p{
+        margin-bottom  : 5px;
+        font-size: 30px
+    }
+    .inp{
+        width:400px;
+        height: 30px;
+    }
+    #right > h2{
+        font-size: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="left">
+            <form >
+                
+                <P>NAME</P>
+                <input class="inp" type="text">
+                <P>EMAIL</P>
+                <input class="inp" type="text">
+                <P>MOBILE NO</P>
+                <input class="inp" type="text">
+                <P style="color:red">Enter a valid mobile no</P>
+                <input style='background-color: black;color:white' class="inp" type="button" value="Registration" />
+            </form>
+            
+        </div>
+        <div id="right">
+            <P>NAME</P>
+            <H2>MASAI</H2>
+            <P>EMAIL</P>
+            <H2>email@maasai.school</H2>
+            <P>MOBILE</P>
+            <h2>9897654321</h2>
+
+        </div>
+
+    </div>
+</body>
+</html>
