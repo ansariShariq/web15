@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // function makeArr(){
+    //     // console.log(arguments)
+
+    //     let obj = {}
+    //     for(let i = 0;i<arguments.length;i++){
+    //         // console.log(arguments[i])
+    //         obj[i] =(arguments[i])
+    //     }
+    //     return obj
+        
+    // }
+    // makeArr.prototype.pushEl = function(){
+    //     console.log(this)
+    // }
+    // var myArr = new makeArr(1,2,3,4,57,784,7,8,4)
+    // myArr.pushEl("shariq")
+    // console.log(myArr)
+    
+ const rebok_shoes = {
+     brand:"Rebook",
+     type:"Shoes",
+     material:"Leather",
+     country:"India"
+ }
+ const rebok_sneakers = Object.create(rebok_shoes)
+ rebok_sneakers.price = 600
+ rebok_sneakers.flexiblity = "50%"
+//  rebok_sneakers.material = "genuine"
+//  console.log(rebok_sneakers,rebok_sneakers.material)
+
+function makeArr (){
+    Object.defineProperty(this,"length",{
+        enumerable:false,
+        writable:true
+    })
+    for(let i = 0;i<arguments.length;i++){
+        this[i] = arguments[i]
+    }
+    this.length = arguments.length
+}
+
+makeArr.prototype.enterEl = function(elem){
+    let ind = this.length
+    this[ind] = elem
+    this.length++
+}
+makeArr.prototype.delEl = function (){
+    let ind = this.length -1
+    delete this[ind]
+    this.length--
+}
+makeArr.prototype.revArr = function(){
+    let i = 0
+    let r = this.length -1
+    while(i<r){
+        let temp = this[i]
+        this[i] = this[r]
+        this[r] = temp
+        i++
+        r--
+    }
+}
+const myArr = new makeArr(9,10,1,2,3,4,5)
+myArr.enterEl("Shariq")
+// myArr.enterEl("Tauseef")
+// myArr.delEl()
+// myArr.delEl()
+// myArr.delEl()
+myArr.revArr()
+console.log(Object.values(myArr))
+
+</script>
+</html>
