@@ -3,7 +3,7 @@ function App() {
   const [score, setScore] = useState(76);
   const [wicket, setWicket] = useState(2);
   const [over, setOver] = useState(50);
-  const [ball, setBall] = useState(1);
+  const [ball, setBall] = useState(0);
 
   const handleScore = (num) => {
     setScore(num + score);

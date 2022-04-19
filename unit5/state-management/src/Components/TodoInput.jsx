@@ -11,6 +11,7 @@ export const TodoInput = ({ handleAddTodo }) => {
         }}
         type="text"
         placeholder="Enter your task here"
+        value={text}
       />
       <button
         onClick={() => {
@@ -19,7 +20,9 @@ export const TodoInput = ({ handleAddTodo }) => {
                 status:false,
                 id:nanoid(4)
             }
-            console.log(payload)
+            setText('')
+            
+            // console.log(payload)
           handleAddTodo(payload);
           
         }}
