@@ -65,7 +65,9 @@ export const Todo = () => {
           />
         );
       })}
-      <button onClick={handleShowTodo}>{!showCompTodo?"Show Completed Todos":"Hide Completed Todos"}</button>
+      <button onClick={handleShowTodo}>
+        {!showCompTodo ? "Show Completed Todos" : "Hide Completed Todos"}
+      </button>
       {showCompTodo &&
         completedTodo.map((item) => {
           return (
